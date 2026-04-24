@@ -1,3 +1,10 @@
+''' Composite viscoelasticity tools
+
+Contents:
+  * 
+
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 
