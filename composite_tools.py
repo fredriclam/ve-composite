@@ -1,8 +1,23 @@
 ''' Composite viscoelasticity tools
 
 Contents:
-  * 
-
+  * VoigtLaminate (class): has a G and K method for computing moduli for a Voigt
+    Laminate (loaded transversely, i.e., in the pulling the cheese from a sandwich)
+  * ReussLaminate (class): has a G and K method for computing moduli for a Reuss
+    Laminate (loaded axially, i.e., squishing the sandwich)
+  * G_Hashin_bounds (function): compute the Hashin curve for given phase moduli
+    and inclusion vol fraction
+  * SphericalInclusion (static class): Composite formed by matrix (phase 1) with
+    dilute spherical inclusions (phase 2). Use K_pole_zero to obtain the poles,
+    zeros, and coefficient of the complex bulk modulus K. Similarly, use
+    G_pole_zero for the complex shear modulus.
+  * PlateletInclusion (static class): Composite formed by matrix (phase 1) with
+    dilute platelet inclusions (phase 2). Only the formula for real K and real G
+    is implemented.
+  * MaxwellMaterial (static class): Maxwell viscoelastic material. Has method
+    mod2complex(De, G) that computes the complex shear modulus.
+  * pole_zero_split (function): splits a rational function additively into
+    partial fraction terms.
 '''
 
 import numpy as np
