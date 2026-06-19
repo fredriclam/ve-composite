@@ -158,14 +158,23 @@ class SphericalInclusion:
     # Equivalent bulk viscosity
     zetae = 4/3 * eta1 * (1 - K1/K2)**2 * phi2
 
-    # Array of zeros
-    roots_num = np.array([
-      -K1e * K2e / zetae / (K1e + K2e)
-    ])
-    # Array of poles (independent of phi2)
-    roots_den = np.array([
-      -K2e/zetae, # == -K2 / (4/3*eta2) * 4 * G1 / (3*K2 + 4*G1),
-    ]) 
+    if phi2 == 0:
+      limit_rate = -(3 * G1 * K2 / (3 * K2 + 4 * G1)) / eta1
+      roots_num = np.array([
+        limit_rate
+      ])
+      roots_den = np.array([
+        limit_rate
+      ])
+    else:
+      # Array of zeros
+      roots_num = np.array([
+        -K1e * K2e / zetae / (K1e + K2e)
+      ])
+      # Array of poles (independent of phi2)
+      roots_den = np.array([
+        -K2e/zetae, # == -K2 / (4/3*eta2) * 4 * G1 / (3*K2 + 4*G1),
+      ]) 
     leading_coeff = K1e + K2e
   
     return (roots_num, roots_den, leading_coeff)
